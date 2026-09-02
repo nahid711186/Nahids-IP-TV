@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>আমার লাইভ টিভি</title>
+    <!-- Video.js CSS -->
+    <link href="https://vjs.zencdn.net/7.20.3/video-js.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 { color: #ff4757; }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .video-box {
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        .channel-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .channel-btn {
+            background-color: #1e1e1e;
+            color: #fff;
+            border: 2px solid #ff4757;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        .channel-btn:hover {
+            background-color: #ff4757;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>📺 লাইভ টিভি</h1>
+        
+        <!-- Video Player -->
+        <div class="video-box">
+            <video id="iptv-player" class="video-js vjs-default-skin vjs-big-play-centered" controls autoplay preload="auto" width="100%" height="400">
+                <source id="video-source" src="" type="application/x-mpegURL">
+            </video>
+        </div>
+
+        <h3>চ্যানেল পছন্দ করুন:</h3>
+        <div class="channel-list">
+            <!-- এখানে আপনার চ্যানেল ও লিঙ্ক বসাতে পারবেন -->
+            <button class="channel-btn" onclick="playChannel('https://test-streams.mux.dev/x36xhtml/x36xhtml.m3u8')">টেস্ট চ্যানেল ১</button>
+            <button class="channel-btn" onclick="playChannel('https://playertest.longtailvideo.com/adaptive/oceans/oceans.m3u8')">টেস্ট চ্যানেল ২</button>
+        </div>
+    </div>
+
+    <!-- Video.js Script -->
+    <script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script>
+    <script>
+        var player = videojs('iptv-player');
+
+        function playChannel(url) {
+            player.src({
+                src: url,
+                type: 'application/x-mpegURL'
+            });
+            player.play();
+        }
+    </script>
+</body>
+</html>
